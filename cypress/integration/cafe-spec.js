@@ -20,4 +20,14 @@ describe('Turing Cafe', () => {
       .get('input[name="time"]').type('6:30').should('have.value', '6:30')
       .get('input[name="guests"]').type(2).should('have.value', 2)
   })
+
+  it('Should be able to submit a new reservation', () => {
+    cy.get('h1').should('contain', 'Turing Cafe Reservations')
+      .get('input[name="name"]').type('Alia')
+      .get('input[name="date"]').type('02/25')
+      .get('input[name="time"]').type('6:30')
+      .get('input[name="guests"]').type(2)
+      .get('form>button').click()
+      .get('.resy-container').find('.resy:last-child').find('h2').should('contain', 'Alia')
+  })
 })
