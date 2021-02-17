@@ -11,23 +11,36 @@ class App extends Component {
     }
   }
 
-  addReservation() {
-    console.log('added!');
+  addReservation = (newResy) => {
+    const postFormat = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(newResy)
+    }
+
+    this.updateData(postFormat)
+      .then(response => this.setState({ reservations: [...this.state.reservations, response] }))
   }
 
-  cancelReservation() {
-    // const canceledResy = this.fetchData()
-    console.log('canceled!');
+  cancelReservation = (event) => {
+    const postFormat = {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+    }
+
+    this.updateData(postFormat, `/${event.target.id}`)
+      .then(response => this.setState({ reservations: response }))
   }
 
-  fetchData(input = '') {
-    return fetch(`http://localhost:3001/api/v1/reservations${input}`)
-            .then(response => response.json())
+  updateData = (postFormat, input = '') => {
+    return fetch(`http://localhost:3001/api/v1/reservations${input}`, postFormat)
+      .then(response => response.json())
   }
 
-  componentDidMount() {
-    const apiData = this.fetchData()
-    apiData.then(reservations => {
+  componentDidMount = () => {
+    fetch('http://localhost:3001/api/v1/reservations')
+      .then(response => response.json())
+      .then(reservations => {
         this.setState({ reservations: reservations })
       })
   }

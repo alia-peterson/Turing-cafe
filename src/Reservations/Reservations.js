@@ -7,6 +7,7 @@ export default function Reservations({ reservations, addReservation, cancelReser
     return (
       <Card
         key={resy.id}
+        id={resy.id}
         name={resy.name}
         date={resy.date}
         time={resy.time}

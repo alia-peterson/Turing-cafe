@@ -9,9 +9,16 @@
   border: 1px solid white;
   box-sizing: border-box;
   color: white;
+  cursor: pointer;
   font-size: 16px;
   height: 30px;
   width: 200px;
+}
+
+.form-button:disabled {
+  background-color: #035e5e;
+  color: #CFD8DC;
+  cursor: default;
 }
 
 .form-input {

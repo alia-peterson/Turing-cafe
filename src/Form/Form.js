@@ -17,7 +17,29 @@ export default class Form extends Component {
     this.setState({ [name]: value })
   }
 
+  addReservation = () => {
+    const newResy = {
+      name: this.state.name,
+      date: this.state.date,
+      time: this.state.time,
+      number: this.state.guests
+    }
+
+    this.props.addReservation(newResy)
+    this.setState({
+      name: '',
+      date: '',
+      time: '',
+      guests: ''
+    })
+  }
+
   render() {
+    let formCompletion = false
+    if (this.state.name && this.state.date && this.state.time && this.state.guests) {
+      formCompletion = true
+    }
+
     return (
       <section className='form-container'>
         <input
@@ -46,13 +68,19 @@ export default class Form extends Component {
           />
         <input
           className='form-input'
-          type='text'
+          type='number'
           name='guests'
           placeholder='Number of guests'
           value={this.state.guests}
           onChange={this.handleChange}
           />
-        <button className='form-button' onClick={this.props.addReservation}>Make Reservation</button>
+        <button
+          className='form-button'
+          onClick={this.addReservation}
+          disabled={formCompletion ? false : true}
+          >
+          Make Reservation
+        </button>
       </section>
     )
   }
