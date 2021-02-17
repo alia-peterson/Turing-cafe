@@ -3,7 +3,7 @@ import Form from '../Form/Form'
 import Reservations from '../Reservations/Reservations'
 import './App.css'
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -19,7 +19,9 @@ class App extends Component {
     }
 
     this.updateData(postFormat)
-      .then(response => this.setState({ reservations: [...this.state.reservations, response] }))
+      .then(response => this.setState({
+        reservations: [...this.state.reservations, response]
+      }))
   }
 
   cancelReservation = (event) => {
@@ -63,5 +65,3 @@ class App extends Component {
     )
   }
 }
-
-export default App

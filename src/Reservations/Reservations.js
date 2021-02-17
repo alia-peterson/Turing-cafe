@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from '../Card/Card'
-import './Reservations.css'
 
 export default function Reservations({ reservations, addReservation, cancelReservation }) {
   const allReservations = reservations.map(resy => {
@@ -16,6 +15,7 @@ export default function Reservations({ reservations, addReservation, cancelReser
         />
     )
   })
+
   return (
     <>
       {allReservations}
