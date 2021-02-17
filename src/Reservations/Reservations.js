@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../Card/Card'
 import './Reservations.css'
 
-export default function Reservations({ reservations }) {
+export default function Reservations({ reservations, addReservation, cancelReservation }) {
   const allReservations = reservations.map(resy => {
     return (
       <Card
@@ -11,6 +11,7 @@ export default function Reservations({ reservations }) {
         date={resy.date}
         time={resy.time}
         number={resy.number}
+        cancelReservation={cancelReservation}
         />
     )
   })

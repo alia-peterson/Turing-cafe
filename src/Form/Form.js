@@ -22,7 +22,6 @@ export default class Form extends Component {
       <section className='form-container'>
         <input
           className='form-input'
-          className='form-input'
           type='text'
           name='name'
           placeholder='Name'
@@ -53,7 +52,7 @@ export default class Form extends Component {
           value={this.state.guests}
           onChange={this.handleChange}
           />
-        <button className='form-button'>Make Reservation</button>
+        <button className='form-button' onClick={this.props.addReservation}>Make Reservation</button>
       </section>
     )
   }

@@ -11,10 +11,23 @@ class App extends Component {
     }
   }
 
+  addReservation() {
+    console.log('added!');
+  }
+
+  cancelReservation() {
+    // const canceledResy = this.fetchData()
+    console.log('canceled!');
+  }
+
+  fetchData(input = '') {
+    return fetch(`http://localhost:3001/api/v1/reservations${input}`)
+            .then(response => response.json())
+  }
+
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/reservations')
-      .then(response => response.json())
-      .then(reservations => {
+    const apiData = this.fetchData()
+    apiData.then(reservations => {
         this.setState({ reservations: reservations })
       })
   }
@@ -24,10 +37,14 @@ class App extends Component {
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-          <Form />
+          <Form addReservation={this.addReservation}/>
         </div>
         <div className='resy-container'>
-          <Reservations reservations={this.state.reservations} />
+          <Reservations
+            reservations={this.state.reservations}
+            addReservation={this.addReservation}
+            cancelReservation={this.cancelReservation}
+            />
         </div>
       </div>
     )
