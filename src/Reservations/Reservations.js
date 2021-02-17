@@ -17,8 +17,8 @@ export default function Reservations({ reservations, addReservation, cancelReser
     )
   })
   return (
-    <article className='resy-container'>
+    <>
       {allReservations}
-    </article>
+    </>
   )
 }

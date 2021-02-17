@@ -41,7 +41,7 @@ export default class Form extends Component {
     }
 
     return (
-      <section className='form-container'>
+      <form className='form-container'>
         <input
           className='form-input'
           type='text'
@@ -81,7 +81,7 @@ export default class Form extends Component {
           >
           Make Reservation
         </button>
-      </section>
+      </form>
     )
   }
 }
