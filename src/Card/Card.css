@@ -1,0 +1,17 @@
+.resy {
+  background-color: white;
+  border: 4px solid #048080;
+  border-radius: 0.5rem;
+  color: #048080;
+  margin: 15px;
+  padding-bottom: 12px;
+  width: 250px;
+}
+
+.resy-button {
+  background-color: #048080;
+  color: white;
+  font-size: 16px;
+  height: 30px;
+  width: 200px;
+}
