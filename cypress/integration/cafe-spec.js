@@ -30,4 +30,8 @@ describe('Turing Cafe', () => {
       .get('form>button').click()
       .get('.resy-container').find('.resy:last-child').find('h2').should('contain', 'Alia')
   })
+
+  it('Should be able to delete the new reservation', () => {
+    cy.get('.resy-container').find('.resy:last-child').find('button').click()
+  })
 })
